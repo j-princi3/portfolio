@@ -1,0 +1,327 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@layer base {
+  :root {
+    /* Cosmic Space Theme */
+    --background: 240 20% 4%;
+    --foreground: 60 10% 95%;
+
+    /* Deep space card */
+    --card: 240 25% 8%;
+    --card-foreground: 60 10% 95%;
+
+    --popover: 240 25% 8%;
+    --popover-foreground: 60 10% 95%;
+
+    /* Tanjiro's Haori Green - Primary */
+    --primary: 155 100% 50%;
+    --primary-foreground: 240 20% 4%;
+
+    /* Cosmic Purple - Secondary */
+    --secondary: 270 60% 30%;
+    --secondary-foreground: 60 10% 95%;
+
+    /* Deep space muted */
+    --muted: 240 20% 15%;
+    --muted-foreground: 240 10% 60%;
+
+    /* Fire breathing accent - Hinokami Kagura */
+    --accent: 15 100% 55%;
+    --accent-foreground: 60 10% 95%;
+
+    /* Blood demon red - destructive */
+    --destructive: 0 85% 50%;
+    --destructive-foreground: 60 10% 95%;
+
+    --border: 270 40% 25%;
+    --input: 270 40% 20%;
+    --ring: 155 100% 50%;
+
+    --radius: 0.25rem;
+
+    /* Custom theme colors */
+    --cosmic-void: 240 20% 4%;
+    --cosmic-deep: 240 25% 8%;
+    --cosmic-purple: 270 60% 30%;
+    --cosmic-purple-glow: 270 80% 50%;
+    --tanjiro-green: 155 100% 50%;
+    --tanjiro-green-dark: 155 80% 30%;
+    --checker-black: 0 0% 10%;
+    --checker-green: 155 60% 25%;
+    --hinokami-fire: 15 100% 55%;
+    --hinokami-gold: 45 100% 60%;
+    --water-breathing: 200 100% 60%;
+    --thunder-breathing: 50 100% 60%;
+    --retro-white: 60 10% 95%;
+    --retro-pink: 330 80% 65%;
+    --star-white: 60 30% 90%;
+
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(180deg, hsl(240 20% 4%) 0%, hsl(270 40% 12%) 50%, hsl(240 20% 4%) 100%);
+    --gradient-fire: linear-gradient(90deg, hsl(15 100% 55%) 0%, hsl(45 100% 60%) 50%, hsl(15 100% 55%) 100%);
+    --gradient-water: linear-gradient(90deg, hsl(200 100% 50%) 0%, hsl(180 100% 70%) 100%);
+    --gradient-thunder: linear-gradient(90deg, hsl(50 100% 60%) 0%, hsl(40 100% 80%) 100%);
+    --gradient-platform: linear-gradient(180deg, hsl(30 50% 35%) 0%, hsl(25 40% 25%) 100%);
+
+    /* Shadows */
+    --shadow-neon-green: 0 0 20px hsl(155 100% 50% / 0.5), 0 0 40px hsl(155 100% 50% / 0.3);
+    --shadow-fire: 0 0 20px hsl(15 100% 55% / 0.5), 0 0 40px hsl(45 100% 60% / 0.3);
+    --shadow-water: 0 0 20px hsl(200 100% 60% / 0.5), 0 0 40px hsl(200 100% 60% / 0.3);
+    --shadow-thunder: 0 0 20px hsl(50 100% 60% / 0.5), 0 0 40px hsl(50 100% 60% / 0.3);
+    --shadow-cosmic: 0 4px 20px hsl(270 60% 30% / 0.3);
+
+    --sidebar-background: 240 25% 8%;
+    --sidebar-foreground: 60 10% 95%;
+    --sidebar-primary: 155 100% 50%;
+    --sidebar-primary-foreground: 240 20% 4%;
+    --sidebar-accent: 270 60% 30%;
+    --sidebar-accent-foreground: 60 10% 95%;
+    --sidebar-border: 270 40% 25%;
+    --sidebar-ring: 155 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Press Start 2P', cursive;
+    overflow-x: hidden;
+  }
+
+  /* Pixel-perfect rendering */
+  img, canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+}
+
+@layer components {
+  /* Checker pattern like Tanjiro's haori */
+  .checker-pattern {
+    background-image: 
+      linear-gradient(45deg, hsl(var(--checker-black)) 25%, transparent 25%),
+      linear-gradient(-45deg, hsl(var(--checker-black)) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, hsl(var(--checker-black)) 75%),
+      linear-gradient(-45deg, transparent 75%, hsl(var(--checker-black)) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    background-color: hsl(var(--checker-green));
+  }
+
+  /* Retro button styles */
+  .retro-btn {
+    @apply relative px-6 py-3 font-pixel text-sm uppercase tracking-wider;
+    @apply border-4 border-b-8 border-r-8;
+    @apply transition-all duration-100;
+    @apply active:border-b-4 active:border-r-4 active:translate-x-1 active:translate-y-1;
+  }
+
+  .retro-btn-primary {
+    @apply retro-btn bg-primary text-primary-foreground;
+    @apply border-primary/80 border-b-primary/40 border-r-primary/40;
+    @apply hover:brightness-110;
+  }
+
+  .retro-btn-secondary {
+    @apply retro-btn bg-secondary text-secondary-foreground;
+    @apply border-secondary/80 border-b-secondary/40 border-r-secondary/40;
+    @apply hover:brightness-110;
+  }
+
+  /* Glowing text effects */
+  .glow-green {
+    text-shadow: 
+      0 0 5px hsl(var(--tanjiro-green)),
+      0 0 10px hsl(var(--tanjiro-green)),
+      0 0 20px hsl(var(--tanjiro-green)),
+      0 0 40px hsl(var(--tanjiro-green));
+  }
+
+  .glow-fire {
+    text-shadow: 
+      0 0 5px hsl(var(--hinokami-fire)),
+      0 0 10px hsl(var(--hinokami-gold)),
+      0 0 20px hsl(var(--hinokami-fire)),
+      0 0 40px hsl(var(--hinokami-gold));
+  }
+
+  .glow-water {
+    text-shadow: 
+      0 0 5px hsl(var(--water-breathing)),
+      0 0 10px hsl(var(--water-breathing)),
+      0 0 20px hsl(var(--water-breathing));
+  }
+
+  .glow-thunder {
+    text-shadow: 
+      0 0 5px hsl(var(--thunder-breathing)),
+      0 0 10px hsl(var(--thunder-breathing)),
+      0 0 20px hsl(var(--thunder-breathing));
+  }
+
+  /* Floating platform style */
+  .floating-platform {
+    @apply relative;
+    background: var(--gradient-platform);
+    @apply border-4 border-t-amber-600 border-l-amber-600 border-b-amber-900 border-r-amber-900;
+    box-shadow: 
+      0 8px 0 hsl(25 40% 20%),
+      0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Pixel border */
+  .pixel-border {
+    @apply border-4;
+    border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Crect fill='%2300ff88' width='8' height='8'/%3E%3C/svg%3E") 4 stretch;
+  }
+
+  /* Scanline effect */
+  .scanlines::after {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.1) 0px,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  }
+
+  /* Game Boy frame for mobile */
+  .gameboy-frame {
+    @apply relative rounded-3xl p-4;
+    background: linear-gradient(135deg, #8b8b8b 0%, #c0c0c0 50%, #8b8b8b 100%);
+    box-shadow: 
+      inset 0 2px 4px rgba(255, 255, 255, 0.3),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+      0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Quest log entry */
+  .quest-entry {
+    @apply relative pl-8 border-l-4 border-primary py-4;
+  }
+
+  .quest-entry::before {
+    content: '▶';
+    @apply absolute left-[-14px] text-primary text-xl;
+  }
+
+  /* Mario pipe style */
+  .mario-pipe {
+    @apply relative;
+    background: linear-gradient(90deg, #2d8b2d 0%, #4ade4a 30%, #4ade4a 70%, #2d8b2d 100%);
+    @apply border-4 border-t-green-400 border-l-green-400 border-b-green-800 border-r-green-800;
+  }
+
+  /* Breathing style card */
+  .breathing-card {
+    @apply relative overflow-hidden rounded-lg p-6;
+    @apply bg-card border-2 border-border;
+    @apply transition-all duration-300;
+  }
+
+  .breathing-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  }
+
+  .breathing-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .breathing-card-water::before {
+    background: linear-gradient(135deg, hsl(200 100% 60% / 0.2) 0%, transparent 100%);
+  }
+
+  .breathing-card-fire::before {
+    background: linear-gradient(135deg, hsl(15 100% 55% / 0.2) 0%, transparent 100%);
+  }
+
+  .breathing-card-thunder::before {
+    background: linear-gradient(135deg, hsl(50 100% 60% / 0.2) 0%, transparent 100%);
+  }
+}
+
+@layer utilities {
+  .font-pixel {
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  .text-shadow-none {
+    text-shadow: none;
+  }
+
+  /* Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { 
+      filter: drop-shadow(0 0 5px hsl(var(--tanjiro-green))) 
+              drop-shadow(0 0 10px hsl(var(--tanjiro-green))); 
+    }
+    50% { 
+      filter: drop-shadow(0 0 15px hsl(var(--tanjiro-green))) 
+              drop-shadow(0 0 30px hsl(var(--tanjiro-green))); 
+    }
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @keyframes slash-water {
+    0% { transform: scaleX(0) rotate(-45deg); opacity: 0; }
+    50% { transform: scaleX(1) rotate(-45deg); opacity: 1; }
+    100% { transform: scaleX(1.5) rotate(-45deg); opacity: 0; }
+  }
+
+  @keyframes slash-fire {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.2); opacity: 0; }
+  }
+
+  @keyframes walk {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-2px); }
+    75% { transform: translateY(-2px); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  .animate-walk {
+    animation: walk 0.4s steps(4) infinite;
+  }
+}
