@@ -17,7 +17,7 @@ export interface ExperienceItem {
 export interface Project {
   title: string;
   description: string;
-  breathingStyle: 'water' | 'thunder' | 'fire';
+  breathingStyle: 'water' | 'thunder' | 'fire' | 'mist' | 'insect' | 'butterfly';
   icon: string;
   tags: string[];
   achievement?: string;

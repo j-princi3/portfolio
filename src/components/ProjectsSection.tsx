@@ -31,6 +31,24 @@ const ProjectCard = ({ title, description, breathingStyle, icon, tags, delay, ac
       glow: 'glow-fire',
       text: 'text-hinokami-fire',
     },
+    mist: {
+      border: 'border-retro-white',
+      bg: 'from-retro-white/20 to-transparent',
+      glow: 'glow-mist',
+      text: 'text-retro-white',
+    },
+    insect: {
+      border: 'border-tanjiro-green',
+      bg: 'from-tanjiro-green/20 to-transparent',
+      glow: 'glow-insect',
+      text: 'text-tanjiro-green',
+    },
+    butterfly: {
+      border: 'border-retro-pink',
+      bg: 'from-retro-pink/20 to-transparent',
+      glow: 'glow-butterfly',
+      text: 'text-retro-pink',
+    },
   };
 
   const colors = styleColors[breathingStyle];
@@ -113,6 +131,101 @@ const ProjectCard = ({ title, description, breathingStyle, icon, tags, delay, ac
           </motion.div>
         )}
 
+        {isHovered && breathingStyle === 'mist' && (
+          <motion.div
+            className="absolute inset-0 pointer-events-none overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute rounded-full bg-retro-white/20 blur-xl"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${40 + Math.random() * 60}px`,
+                  height: `${40 + Math.random() * 60}px`,
+                }}
+                animate={{
+                  x: [0, Math.random() * 50 - 25],
+                  y: [0, Math.random() * 50 - 25],
+                  opacity: [0.2, 0.5, 0.2],
+                }}
+                transition={{
+                  duration: 3 + Math.random() * 2,
+                  delay: i * 0.2,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                }}
+              />
+            ))}
+          </motion.div>
+        )}
+
+        {isHovered && breathingStyle === 'insect' && (
+          <motion.div
+            className="absolute inset-0 pointer-events-none overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-tanjiro-green rounded-full"
+                style={{
+                  left: `${10 + i * 15}%`,
+                  top: '50%',
+                }}
+                animate={{
+                  y: [-20, 20, -20],
+                  x: [0, Math.sin(i) * 30, 0],
+                  opacity: [0, 1, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  delay: i * 0.1,
+                  repeat: Infinity,
+                }}
+              />
+            ))}
+          </motion.div>
+        )}
+
+        {isHovered && breathingStyle === 'butterfly' && (
+          <motion.div
+            className="absolute inset-0 pointer-events-none overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute"
+                style={{
+                  left: `${10 + i * 15}%`,
+                  top: `${20 + (i % 3) * 30}%`,
+                }}
+              >
+                <motion.div
+                  className="w-3 h-3 bg-retro-pink/60 rounded-full"
+                  animate={{
+                    scale: [0, 1.5, 0],
+                    rotate: [0, 180, 360],
+                    opacity: [0, 0.8, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    delay: i * 0.2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+
         {/* Content */}
         <div className="relative z-10">
           {/* Icon and title */}
@@ -142,6 +255,9 @@ const ProjectCard = ({ title, description, breathingStyle, icon, tags, delay, ac
             {breathingStyle === 'water' && 'WATER BREATHING STYLE'}
             {breathingStyle === 'thunder' && 'THUNDER BREATHING STYLE'}
             {breathingStyle === 'fire' && 'HINOKAMI KAGURA'}
+            {breathingStyle === 'mist' && 'MIST BREATHING STYLE'}
+            {breathingStyle === 'insect' && 'INSECT BREATHING STYLE'}
+            {breathingStyle === 'butterfly' && 'BUTTERFLY BREATHING STYLE'}
           </div>
 
           {/* Description */}
@@ -154,7 +270,7 @@ const ProjectCard = ({ title, description, breathingStyle, icon, tags, delay, ac
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-1 text-[10px] font-pixel bg-muted text-muted-foreground rounded"
+                className="px-3 py-1.5 text-xs md:text-sm font-pixel bg-muted text-muted-foreground rounded"
               >
                 {tag}
               </span>
@@ -176,9 +292,9 @@ const ProjectsSection = () => {
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
       >
-        <div className="bg-card/90 backdrop-blur border-2 border-breathing-water px-4 py-2 rounded">
-          <span className="text-[10px] md:text-xs text-breathing-water font-pixel">LEVEL 3</span>
-          <p className="text-[8px] md:text-[10px] text-muted-foreground font-pixel mt-1">THE ARTIFACTS</p>
+        <div className="bg-card/90 backdrop-blur border-2 border-breathing-water px-5 py-3 rounded">
+          <span className="text-xs md:text-sm text-breathing-water font-pixel">LEVEL 3</span>
+          <p className="text-[10px] md:text-xs text-muted-foreground font-pixel mt-1">THE ARTIFACTS</p>
         </div>
       </motion.div>
 
@@ -194,7 +310,7 @@ const ProjectsSection = () => {
             <span className="glow-water">LEGENDARY</span>{' '}
             <span className="glow-thunder">ARTIFACTS</span>
           </h2>
-          <p className="text-[10px] md:text-xs text-muted-foreground font-pixel">
+          <p className="text-xs md:text-sm text-muted-foreground font-pixel">
             Forged through code. Powered by breathing techniques.
           </p>
         </motion.div>
@@ -209,13 +325,13 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        {/* Decorative pipes */}
+        {/* Decorative pipes
         <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-12">
           <div className="mario-pipe h-32 w-full rounded-r-lg" />
         </div>
         <div className="hidden lg:block absolute right-0 top-2/3 -translate-y-1/2 w-12">
           <div className="mario-pipe h-24 w-full rounded-l-lg" />
-        </div>
+        </div> */}
       </div>
     </section>
   );

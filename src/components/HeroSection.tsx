@@ -16,36 +16,21 @@ const HeroSection = () => {
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
-        <div className="bg-card/80 backdrop-blur border-2 border-primary px-4 py-2 rounded">
-          <span className="text-[10px] md:text-xs text-primary font-pixel">LEVEL 1</span>
-          <p className="text-[8px] md:text-[10px] text-muted-foreground font-pixel mt-1">THE ORIGIN</p>
+        <div className="bg-card/80 backdrop-blur border-2 border-primary px-5 py-3 rounded">
+          <span className="text-xs md:text-sm text-primary font-pixel">LEVEL 1</span>
+          <p className="text-[10px] md:text-xs text-muted-foreground font-pixel mt-1">THE ORIGIN</p>
         </div>
       </motion.div>
 
-      {/* Floating Torii gate decoration */}
-      <motion.div
-        className="absolute top-20 right-10 md:right-20 opacity-30"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 0.3, y: 0 }}
-        transition={{ delay: 1, duration: 1 }}
-      >
-        <svg width="120" height="100" viewBox="0 0 120 100" className="text-destructive">
-          <rect x="10" y="20" width="8" height="80" fill="currentColor" />
-          <rect x="102" y="20" width="8" height="80" fill="currentColor" />
-          <rect x="0" y="10" width="120" height="12" fill="currentColor" rx="2" />
-          <rect x="5" y="30" width="110" height="8" fill="currentColor" />
-        </svg>
-      </motion.div>
-
       {/* Main content */}
-      <FloatingPlatform delay={0.2} variant="rock" className="z-10">
+      <FloatingPlatform delay={0.2} variant="rock" className="z-10 relative">
         <div className="flex flex-col items-center text-center px-8 py-12">
           {/* Character */}
           <motion.div
-            className="mb-8"
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3, type: 'spring' }}
+            className="mb-8 relative z-20"
+            initial={{ y: 80, opacity: 0, scale: 0.7 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, type: 'spring', stiffness: 100, damping: 10 }}
           >
             <PixelCharacter />
           </motion.div>
@@ -59,10 +44,10 @@ const HeroSection = () => {
           >
             <span className="block glow-green">PRINCI JAIN</span>
             <span className="block text-lg md:text-2xl lg:text-3xl mt-4 text-primary">
-              Software Engineer
+              AI/ML Developer, Full Stack Developer
             </span>
             <span className="block text-sm md:text-lg lg:text-xl mt-2 text-accent">
-              & Cloud Slayer
+              & Aspiring DevOps Engineer
             </span>
           </motion.h1>
 
@@ -74,9 +59,9 @@ const HeroSection = () => {
             transition={{ delay: 0.7 }}
           >
             Mastering the{' '}
-            <span className="text-breathing-water">Breath of Cloud</span>
+            <span className="text-breathing-water">Breath of Logic</span>
             {' '}and{' '}
-            <span className="text-hinokami-gold">Logic</span>
+            <span className="text-hinokami-gold">Flame of Innovation</span>
           </motion.p>
 
           {/* Social links - using reusable component */}

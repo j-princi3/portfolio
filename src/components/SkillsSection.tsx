@@ -116,7 +116,7 @@ const SkillsSection = () => {
           <h2 className="text-xl md:text-3xl font-pixel text-foreground mb-4">
             COMBAT <span className="text-primary glow-green">TECHNIQUES</span>
           </h2>
-          <p className="text-[10px] md:text-xs text-muted-foreground font-pixel max-w-md mx-auto">
+          <p className="text-xs md:text-sm text-muted-foreground font-pixel max-w-md mx-auto">
             Master of multiple breathing styles. Each technique honed through countless battles.
           </p>
         </motion.div>
@@ -140,10 +140,10 @@ const SkillsSection = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {[
-              { label: 'LEETCODE', value: '500+', color: 'text-primary' },
-              { label: 'PROJECTS', value: '10+', color: 'text-breathing-water' },
-              { label: 'HACKATHONS', value: '5+', color: 'text-hinokami-fire' },
-              { label: 'BREATHING STYLES', value: '4', color: 'text-breathing-thunder' },
+              { label: 'LEETCODE', value: '475+', color: 'text-primary' },
+              { label: 'PROJECTS', value: '8+', color: 'text-breathing-water' },
+              { label: 'WON HACKATHONS', value: '1', color: 'text-hinokami-fire' },
+              { label: 'BREATHING STYLES', value: '5', color: 'text-breathing-thunder' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -152,10 +152,10 @@ const SkillsSection = () => {
                 transition={{ delay: 0.5 + i * 0.1, type: 'spring' }}
                 viewport={{ once: true }}
               >
-                <div className={`text-2xl md:text-3xl font-pixel ${stat.color}`}>
+                <div className={`text-3xl md:text-4xl font-pixel ${stat.color}`}>
                   {stat.value}
                 </div>
-                <div className="text-[8px] font-pixel text-muted-foreground mt-1">
+                <div className="text-[10px] md:text-xs font-pixel text-muted-foreground mt-1">
                   {stat.label}
                 </div>
               </motion.div>

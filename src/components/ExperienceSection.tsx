@@ -22,7 +22,7 @@ const QuestEntry = ({ title, company, type, achievements, icon, delay }: QuestEn
     >
       <div className="quest-entry">
         {/* Quest type badge */}
-        <div className={`absolute -left-4 top-0 px-2 py-1 text-[8px] font-pixel rounded ${
+        <div className={`absolute -left-4 top-0 px-3 py-1.5 text-[11px] md:text-xs font-pixel rounded ${
           type === 'main' 
             ? 'bg-hinokami-fire text-foreground' 
             : 'bg-secondary text-secondary-foreground'
@@ -96,7 +96,7 @@ const QuestEntry = ({ title, company, type, achievements, icon, delay }: QuestEn
 
 const ExperienceSection = () => {
   return (
-    <section className="relative min-h-screen px-4 py-20 overflow-hidden">
+    <section className="relative min-h-screen px-4 py-20 overflow-hidden z-20">
       {/* Level indicator */}
       <motion.div 
         className="sticky top-8 left-8 z-20 inline-block"
@@ -104,9 +104,9 @@ const ExperienceSection = () => {
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
       >
-        <div className="bg-card/90 backdrop-blur border-2 border-destructive px-4 py-2 rounded">
-          <span className="text-[10px] md:text-xs text-destructive font-pixel">LEVEL 2</span>
-          <p className="text-[8px] md:text-[10px] text-muted-foreground font-pixel mt-1">BOSS BATTLES</p>
+        <div className="bg-card/90 backdrop-blur border-2 border-destructive px-5 py-3 rounded">
+          <span className="text-xs md:text-sm text-destructive font-pixel">LEVEL 2</span>
+          <p className="text-[10px] md:text-xs text-muted-foreground font-pixel mt-1">BOSS BATTLES</p>
         </div>
       </motion.div>
 
@@ -119,7 +119,7 @@ const ExperienceSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="flex items-center justify-center gap-4 mb-8">
               <Sword className="w-8 h-8 text-hinokami-fire" />
               <h2 className="text-xl md:text-3xl font-pixel text-foreground glow-fire">
                 QUEST LOG
@@ -127,7 +127,7 @@ const ExperienceSection = () => {
               <Sword className="w-8 h-8 text-hinokami-fire transform scale-x-[-1]" />
             </div>
             <p className="text-[10px] md:text-xs text-muted-foreground font-pixel">
-              Battles fought. Enemies defeated. Glory earned.
+              .
             </p>
           </motion.div>
         </FloatingPlatform>
