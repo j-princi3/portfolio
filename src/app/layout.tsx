@@ -5,8 +5,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import "@/index.css";
 
 export const metadata: Metadata = {
-  title: "Portfolio - Software Engineer & Cloud Developer",
-  description: "Portfolio showcasing software engineering and cloud development projects",
+  title: "Portfolio - Princi Jain",
+  description: "Portfolio showcasing Engineering projects, Skills and Experience.",
 };
 
 export default function RootLayout({
