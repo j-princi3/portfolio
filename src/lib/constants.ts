@@ -31,7 +31,7 @@ export const CONTACT_INFO = {
 export const EXPERIENCE_DATA = [
   {
     title: 'Software Engineer Intern',
-    company: 'EVENTBRITE',
+    company: 'EVENTBRITE , JULY 2025 - DEC 2025',
     type: 'main' as const,
     achievements: [
       'Improved backend access control for a Retool LCNC application by updating AWS Lambda authorization logic behind API Gateway — restoring 100% user access.',
@@ -47,7 +47,7 @@ export const EXPERIENCE_DATA = [
   },
   {
     title: 'Developer',
-    company: 'TECH FOR AUTISM & DYSLEXIA',
+    company: 'TECH FOR AUTISM & DYSLEXIA , APRIL 2024 - SEPT 2024',
     type: 'side' as const,
     achievements: [
        'Designed and built an interactive memory game for children with dyslexia using a drag-and-drop interface.',

@@ -59,9 +59,9 @@ const HeroSection = () => {
             transition={{ delay: 0.7 }}
           >
             Mastering the{' '}
-            <span className="text-breathing-water">Breath of Logic</span>
+            <span className="text-breathing-water">Breath of Data Structure</span>
             {' '}and{' '}
-            <span className="text-hinokami-gold">Flame of Innovation</span>
+            <span className="text-hinokami-gold">Algorithms</span>
           </motion.p>
 
           {/* Social links - using reusable component */}

@@ -100,7 +100,7 @@ html {
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-x: hidden;
   }
 
@@ -262,7 +262,7 @@ html {
 
 @layer utilities {
   .font-pixel {
-    font-family: 'Press Start 2P', cursive;
+    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   .text-shadow-none {

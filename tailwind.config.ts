@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        pixel: ['"Segoe UI"', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
