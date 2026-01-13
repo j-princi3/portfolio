@@ -67,8 +67,15 @@ export const PROJECTS_DATA = [
     description: 'Engineered a dual deep learning pipeline (YOLOv11/Faster R-CNN) to integrate SAR and optical satellite imagery for accurate vessel and marine debris detection. Designed and validated a spatial-temporal correlation algorithm to link detected ships to newly formed debris zones, generating reliable proximity-based pollution alerts. Deployed a secure full-stack visualization platform (React.js/Flask) for interactive map analysis, and established an automated alerting pipeline for regulatory reporting.',
     breathingStyle: 'water' as const,
     icon: 'Droplets',
-    tags: ['YOLOv11', 'SAR', 'Computer Vision', 'Python', 'R-CNN', 'Flask', 'React.js','JavaScript','Firebase Authentication'],
+    tags: ['YOLOv11', , 'R-CNN' , 'Python'  , 'JavaScript' , 'Flask' , 'React.js' , 'Firebase Authentication', 'Computer Vision', 'SAR'],
     achievement: 'Filed a Patent',
+    // Optional image and links
+    image: '/images/aquasentinel.png',
+    imageType: 'web',
+    links: [
+      { label: 'Frontend Repo', href: 'https://github.com/j-princi3/aqua-sentinel-frontend' },
+      { label: 'Backend Repo', href: 'https://github.com/j-princi3/aqua-sentinel-backend' }
+    ],
     delay: 0.1,
   },
   {
@@ -77,30 +84,11 @@ export const PROJECTS_DATA = [
     breathingStyle: 'thunder' as const,
     icon: 'Zap',
     tags : ['FastAPI', 'Flutter', 'Ngrok', 'Firebase', 'Python', 'ViT', 'UNETR', 'Pix2Pix GAN'],
-    delay: 0.25,
-  },
-  {
-    title: 'STUDY R',
-    description: 'Developed a full-stack collaborative study platform using Flutter and Node.js, featuring community-based discussions, real-time one-to-one and group chat, video study sessions, note management, and a RESTful client-server architecture. Implemented AI-powered learning tools, including a virtual chatbot for student doubt resolution and a PDF-based question retrieval system, improving student engagement, collaboration, and access to learning resources.',
-    breathingStyle: 'fire' as const,
-    icon: 'Trophy',
-    tags: ['Flutter', 'Node.js', 'MongoDB', 'OpenAI GPT-3.5'],
-    delay: 0.4,
-  },
-  {
-    title: 'Project Platform',
-    description: 'Created a full-stack project-sharing site with plagiarism detection via Hugging Face built-in model and custom parsers. Developed secure REST APIs in Node.js and handled auth with tokens; used MongoDB and React for dynamic UI.',
-    breathingStyle: 'mist' as const,
-    icon: 'Cloud',
-    tags : ['React.js', 'Node.js', 'MongoDB', 'RESTful API','Hugging Face', 'Plagiarism Detection','Express'],
-    delay: 0.25,
-  },
-  {
-    title: 'Hisab Kitaab',
-    description: 'Designed and developed HisabKitab, a full‑stack bookkeeping application that streamlines ledger management, invoicing, and expense tracking by implementing user authentication, persistent data storage, and a responsive UI to simplify small‑business accounting workflows. Created documentation and automated tests, and applied version‑control and CI practices to improve code quality and enable reliable iterative releases.',
-    breathingStyle: 'insect' as const,
-    icon: 'Bug',
-    tags : ['Flutter', 'MySQL', 'RESTful API'],
+    image: '/images/remotesensinggenai.jpg',
+    imageType: 'mobile',
+    links: [
+      { label: 'Demo', href: 'https://drive.google.com/drive/folders/126Rh1XnW5KrRbbLBvr0AsbaAFxA3WC2w' }
+    ],
     delay: 0.25,
   },
   {
@@ -109,8 +97,60 @@ export const PROJECTS_DATA = [
     breathingStyle: 'butterfly' as const,
     icon: 'Sparkles',
     tags : ['Next.js', 'TypeScript', 'CSS', 'RESTful API'],
+    image: '/images/campusify.png',
+    imageType: 'web',
+    links: [
+      { label: 'Repo', href: 'https://github.com/j-princi3/Blogging_Website' },
+      { label: 'Live', href: 'https://blogging-website-lyart-eta.vercel.app/' }
+    ],
     delay: 0.25,
   },
+
+
+  
+  {
+    title: 'STUDY R',
+    description: 'Developed a full-stack collaborative study platform using Flutter and Node.js, featuring community-based discussions, real-time one-to-one and group chat, video study sessions, note management, and a RESTful client-server architecture. Implemented AI-powered learning tools, including a virtual chatbot for student doubt resolution and a PDF-based question retrieval system, improving student engagement, collaboration, and access to learning resources.',
+    breathingStyle: 'fire' as const,
+    icon: 'Trophy',
+    achievement: 'Won 2nd Runner Up in Hackathon',
+    tags: ['Flutter', 'Node.js','Express.js', 'MongoDB', 'OpenAI GPT'],
+    image: '/images/studyr.jpg',
+    imageType: 'mobile',
+    links: [
+      { label: 'Repo', href: 'https://github.com/j-princi3/StudyR' }
+    ],
+    delay: 0.4,
+  },
+    {
+    title: 'Project Platform',
+    description: 'Created a full-stack project-sharing site with plagiarism detection via Hugging Face built-in model and custom parsers. Developed secure REST APIs in Node.js and handled auth with tokens; used MongoDB and React for dynamic UI.',
+    breathingStyle: 'mist' as const,
+    icon: 'Cloud',
+    tags : ['React.js', 'Node.js', 'MongoDB' , 'Express', 'RESTful API' , 'Hugging Face', 'Plagiarism Detection'],
+    image: '/images/project-platform.png',
+    imageType: 'web',
+    links: [
+      { label: 'Repo', href: 'https://github.com/j-princi3/ProjectPlatform' },
+      { label: 'Live', href: 'https://project-platform-6i0m.onrender.com/' }
+    ],
+    delay: 0.25,
+  },
+  
+  {
+    title: 'Hisab Kitaab',
+    description: 'Designed and developed HisabKitab, a full‑stack bookkeeping application that streamlines ledger management, invoicing, and expense tracking by implementing user authentication, persistent data storage, and a responsive UI to simplify small‑business accounting workflows. Created documentation and automated tests, and applied version‑control and CI practices to improve code quality and enable reliable iterative releases.',
+    breathingStyle: 'insect' as const,
+    icon: 'Bug',
+    tags : ['Flutter', 'MySQL', 'RESTful API'],
+    image: '/images/hisab-kitab.jpeg',
+    imageType: 'mobile',
+    links: [
+      { label: 'Repo', href: 'https://github.com/j-princi3/HisabKitab' }
+    ],
+    delay: 0.25,
+  },
+  
 ];
 
 // Skills/Breathing Styles Data
@@ -119,10 +159,10 @@ export const SKILLS_DATA = [
     name: 'CLOUD BREATHING',
     subtitle: 'DevOps Mastery',
     icon: 'Cloud',
-    skills: ['AWS', 'Docker', 'Git/Github', 'CI/CD', 'Cloud Formation','Jenkins'],
+    skills: ['AWS', 'Docker', 'Git/Github', 'Cloud Formation','Jenkins', 'CircleCI'],
     color: 'water-breathing',
     glowClass: 'text-breathing-water',
-    level: 50,
+    level: 70,
   },
   {
     name: 'CODE BREATHING',
@@ -134,8 +174,8 @@ export const SKILLS_DATA = [
     level: 90,
   },
   {
-    name: 'DEVELOPER BREATHING',
-    subtitle: 'Fusion',
+    name: 'FULL-STACK BREATHING',
+    subtitle: 'Fusion Art',
     icon: 'Globe',
     skills: ['React.js', 'Next.js', 'Node.js', 'Express', 'Flutter', 'FastAPI', 'Flask', 'MongoDB'],
     color: 'hinokami-fire',
@@ -146,7 +186,7 @@ export const SKILLS_DATA = [
     name: 'MIND BREATHING',
     subtitle: 'Conceptual Combat',
     icon: 'Brain',
-    skills: ['DSA (475+ LC)','OOP', 'AI/ML','Agentic AI', 'System Design','DM', 'CN','OS'],
+    skills: ['DSA (475+ LC)','OOP', 'AI/ML','Agentic AI', 'System Design', 'CI/CD' , 'CN' , 'OS' ],
     color: 'thunder-breathing',
     glowClass: 'text-breathing-thunder',
     level: 85,
@@ -155,10 +195,10 @@ export const SKILLS_DATA = [
     name: 'AI BREATHING',
     subtitle: 'Intelligent Innovations',
     icon: 'Cpu',
-    skills: ['TensorFlow', 'Keras', 'PyTorch', 'OpenCV', 'NLP', 'Computer Vision'],
+    skills: ['TensorFlow', 'Keras', 'PyTorch', 'OpenCV', 'NLP', 'Computer Vision', 'GenAI', 'LangChain'],
     color: 'water-breathing',
     glowClass: 'text-breathing-water',
-    level: 50,
+    level: 70,
   }
 ];
 

@@ -4,12 +4,13 @@ import { motion } from 'framer-motion';
 import * as LucideIcons from 'lucide-react';
 import { Trophy } from 'lucide-react';
 import { useState } from 'react';
+import { Button } from './ui/button';
 import { PROJECTS_DATA } from '@/lib/constants';
 import { Project } from '@/lib/types';
 
 interface ProjectCardProps extends Project {}
 
-const ProjectCard = ({ title, description, breathingStyle, icon, tags, delay, achievement }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, breathingStyle, icon, tags, delay, achievement, image, links, layout, imageType }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const styleColors = {
@@ -18,41 +19,122 @@ const ProjectCard = ({ title, description, breathingStyle, icon, tags, delay, ac
       bg: 'from-breathing-water/20 to-transparent',
       glow: 'glow-water',
       text: 'text-breathing-water',
+      hover: 'hover:bg-breathing-water/8 hover:border-breathing-water/60 hover:text-breathing-water/80',
     },
     thunder: {
       border: 'border-breathing-thunder',
       bg: 'from-breathing-thunder/20 to-transparent',
       glow: 'glow-thunder',
       text: 'text-breathing-thunder',
+      hover: 'hover:bg-breathing-thunder/8 hover:border-breathing-thunder/60 hover:text-breathing-thunder/80',
     },
     fire: {
       border: 'border-hinokami-fire',
       bg: 'from-hinokami-fire/20 to-transparent',
       glow: 'glow-fire',
       text: 'text-hinokami-fire',
+      hover: 'hover:bg-hinokami-fire/8 hover:border-hinokami-fire/60 hover:text-hinokami-fire/80',
     },
     mist: {
       border: 'border-retro-white',
       bg: 'from-retro-white/20 to-transparent',
       glow: 'glow-mist',
       text: 'text-retro-white',
+      hover: 'hover:bg-retro-white/8 hover:border-retro-white/60 hover:text-retro-white/80',
     },
     insect: {
       border: 'border-tanjiro-green',
       bg: 'from-tanjiro-green/20 to-transparent',
       glow: 'glow-insect',
       text: 'text-tanjiro-green',
+      hover: 'hover:bg-tanjiro-green/8 hover:border-tanjiro-green/60 hover:text-tanjiro-green/80',
     },
     butterfly: {
       border: 'border-retro-pink',
       bg: 'from-retro-pink/20 to-transparent',
       glow: 'glow-butterfly',
       text: 'text-retro-pink',
+      hover: 'hover:bg-retro-pink/8 hover:border-retro-pink/60 hover:text-retro-pink/80',
     },
   };
 
   const colors = styleColors[breathingStyle];
   const IconComponent = (LucideIcons as any)[icon];
+
+  const isMobileImage = imageType === 'mobile';
+
+  // Extract reusable content so we don't duplicate markup
+  const content = (
+    <>
+      {/* Icon and title */}
+      <div className="flex items-start gap-4 mb-4">
+        <motion.div
+          className={`p-3 rounded-lg bg-muted`}
+          animate={isHovered ? { scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] } : {}}
+          transition={{ duration: 0.5 }}
+        >
+          <IconComponent className="w-6 h-6 text-muted-foreground" />
+        </motion.div>
+        <div className="flex-1">
+          <h3 className={`text-base md:text-lg font-pixel ${colors.text}`}>
+            {title}
+          </h3>
+          {achievement && (
+            <div className="flex items-center gap-1 mt-1">
+              <Trophy className="w-3 h-3 text-hinokami-gold" />
+              <span className="text-[10px] font-pixel text-hinokami-gold">{achievement}</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Breathing style label */}
+      <div className={`inline-block px-2 py-1 text-[10px] font-pixel ${colors.text} bg-muted rounded mb-3`}>
+        {breathingStyle === 'water' && 'WATER BREATHING STYLE'}
+        {breathingStyle === 'thunder' && 'THUNDER BREATHING STYLE'}
+        {breathingStyle === 'fire' && 'HINOKAMI KAGURA'}
+        {breathingStyle === 'mist' && 'MIST BREATHING STYLE'}
+        {breathingStyle === 'insect' && 'INSECT BREATHING STYLE'}
+        {breathingStyle === 'butterfly' && 'BUTTERFLY BREATHING STYLE'}
+      </div>
+
+      {/* Description */}
+      <p className="text-xs md:text-sm font-pixel text-muted-foreground leading-relaxed mb-4">
+        {description}
+      </p>
+
+      {/* Tags */}
+      {Array.isArray(tags) && tags.filter(Boolean).length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {tags.filter(Boolean).map((tag, idx) => (
+            <span
+              key={`${tag ?? 'tag'}-${idx}`}
+              className="px-3 py-1.5 text-xs md:text-sm font-pixel bg-muted text-muted-foreground rounded"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* Links (optional) */}
+      {typeof (links) !== 'undefined' && links && links.length > 0 && (
+        <div className="flex flex-wrap gap-2 mt-4">
+          {links.map((l) => (
+            <Button
+              asChild
+              size="sm"
+              variant="ghost"
+              className={`px-3 py-1 rounded-full border border-input/20 bg-muted/40 ${colors.hover} hover:scale-105 transition-transform`}
+              key={l.href}
+            >
+              <a href={l.href} target="_blank" rel="noreferrer">{l.label}</a>
+            </Button>
+          ))}
+        </div>
+      )}
+    </>
+  );
 
   return (
     <motion.div
@@ -64,8 +146,8 @@ const ProjectCard = ({ title, description, breathingStyle, icon, tags, delay, ac
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Mario-style pipe top */}
-      <div className="relative z-10 mx-auto w-full max-w-sm">
+      {/* Mario-style pipe top (match card width) */}
+      <div className="relative z-10 w-full">
         <div className={`h-6 rounded-t-lg bg-gradient-to-b ${colors.bg} border-t-4 border-x-4 ${colors.border} bg-card`} />
       </div>
 
@@ -226,57 +308,60 @@ const ProjectCard = ({ title, description, breathingStyle, icon, tags, delay, ac
           </motion.div>
         )}
 
-        {/* Content */}
-        <div className="relative z-10">
-          {/* Icon and title */}
-          <div className="flex items-start gap-4 mb-4">
+        {/* Render mobile (phone) or web (stacked) layout based on imageType */}
+        {isMobileImage ? (
+          <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
+            {/* Left: phone image */}
             <motion.div
-              className={`p-3 rounded-lg bg-muted`}
-              animate={isHovered ? { scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] } : {}}
-              transition={{ duration: 0.5 }}
+              className="w-full md:w-1/2 flex justify-center"
+              animate={isHovered ? { scale: 1.05, y: -6 } : { scale: 1, y: 0 }}
+              transition={{ type: 'spring', stiffness: 200, damping: 18 }}
             >
-              <IconComponent className="w-6 h-6 text-muted-foreground" />
+              <div className="relative rounded-[2rem] p-2 bg-black shadow-xl">
+                {typeof (image) !== 'undefined' && image && (
+                  <img
+                    src={image}
+                    alt={title}
+                    className={`h-[340px] md:h-[420px] object-contain rounded-[1.5rem] border-2 ${colors.border}`}
+                  />
+                )}
+              </div>
             </motion.div>
-            <div className="flex-1">
-              <h3 className={`text-base md:text-lg font-pixel ${colors.text}`}>
-                {title}
-              </h3>
-              {achievement && (
-                <div className="flex items-center gap-1 mt-1">
-                  <Trophy className="w-3 h-3 text-hinokami-gold" />
-                  <span className="text-[10px] font-pixel text-hinokami-gold">{achievement}</span>
-                </div>
-              )}
+
+            {/* Right: content */}
+            <div className="w-full md:w-1/2">
+              {content}
             </div>
           </div>
-
-          {/* Breathing style label */}
-          <div className={`inline-block px-2 py-1 text-[10px] font-pixel ${colors.text} bg-muted rounded mb-3`}>
-            {breathingStyle === 'water' && 'WATER BREATHING STYLE'}
-            {breathingStyle === 'thunder' && 'THUNDER BREATHING STYLE'}
-            {breathingStyle === 'fire' && 'HINOKAMI KAGURA'}
-            {breathingStyle === 'mist' && 'MIST BREATHING STYLE'}
-            {breathingStyle === 'insect' && 'INSECT BREATHING STYLE'}
-            {breathingStyle === 'butterfly' && 'BUTTERFLY BREATHING STYLE'}
-          </div>
-
-          {/* Description */}
-          <p className="text-xs md:text-sm font-pixel text-muted-foreground leading-relaxed mb-4">
-            {description}
-          </p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1.5 text-xs md:text-sm font-pixel bg-muted text-muted-foreground rounded"
+        ) : (
+          <div className="relative z-10">
+            {typeof (image) !== 'undefined' && image && (
+              <motion.div
+                className="mb-4"
+                animate={isHovered ? { scale: 1.02, y: -6 } : { scale: 1, y: 0 }}
+                transition={{ type: 'spring', stiffness: 200, damping: 18 }}
               >
-                {tag}
-              </span>
-            ))}
+                <div className={`rounded-lg border-2 ${colors.border} bg-card shadow-lg overflow-hidden`}>
+                  {/* Browser chrome */}
+                  <div className="flex items-center gap-2 px-3 py-2 bg-muted/30">
+                    <span className="w-2 h-2 rounded-full bg-red-500/80" />
+                    <span className="w-2 h-2 rounded-full bg-yellow-400/80" />
+                    <span className="w-2 h-2 rounded-full bg-green-400/80" />
+                    <div className="ml-4 flex-1 h-3 bg-muted/60 rounded" />
+                  </div>
+
+                  {/* Website preview */}
+                  <img
+                    src={image}
+                    alt={title}
+                    className={`w-full h-40 md:h-48 object-cover`}
+                  />
+                </div>
+              </motion.div>
+            )}
+            {content}
           </div>
-        </div>
+        )}
       </motion.div>
     </motion.div>
   );
@@ -316,7 +401,7 @@ const ProjectsSection = () => {
         </motion.div>
 
         {/* Projects grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {PROJECTS_DATA.map((project) => (
             <ProjectCard
               key={project.title}

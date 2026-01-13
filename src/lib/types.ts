@@ -22,6 +22,15 @@ export interface Project {
   tags: string[];
   achievement?: string;
   delay: number;
+  // Optional image path (public/) or external URL
+  image?: string;
+  // Optional related links
+  links?: { label: string; href: string }[];
+  // Layout for project card: 'stack' (image above) or 'side' (image left, content right)
+  // allow string to accommodate literal widening in constants
+  layout?: 'stack' | 'side' | string;
+  // Image type to choose layout: 'mobile' (phone screenshots) or 'web' (website previews)
+  imageType?: 'mobile' | 'web' | string;
 }
 
 export interface Skill {

@@ -46,17 +46,6 @@ const HeroSection = () => {
           >
             <span className="block glow-green flex items-center justify-center gap-3">
               <span>PRINCI JAIN</span>
-              <Button
-                asChild
-                size="icon"
-                variant="ghost"
-                className="bg-transparent p-0 hover:bg-transparent hover:text-primary/90 focus:ring-0 transition-colors"
-                aria-label="Download resume"
-              >
-                <a href="/resume.pdf" download="Princi_Jain_Resume.pdf" aria-label="Download resume">
-                  <CloudDownload className="w-4 h-4 text-primary" />
-                </a>
-              </Button>
             </span>
             <span className="block text-lg md:text-2xl lg:text-3xl mt-4 text-primary">
               AI/ML Developer, Full Stack Developer
@@ -65,8 +54,6 @@ const HeroSection = () => {
               & Aspiring DevOps Engineer
             </span>
           </motion.h1>
-
-          {/* Subtitle */}
           <motion.p
             className="text-[10px] md:text-xs text-muted-foreground font-pixel max-w-md mb-8 leading-relaxed"
             initial={{ opacity: 0 }}
@@ -84,11 +71,26 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
+            className="flex items-center justify-center gap-4"
           >
             <SocialLinksGroup links={SOCIAL_LINKS} size="md" />
+
+            <motion.a
+              href="/resume.pdf"
+              download="Princi_Jain_Resume.pdf"
+              aria-label="Download resume"
+              title="Download resume (PDF)"
+              className={`w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-background transition-all duration-300 hover:shadow-lg hover:scale-110`}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <CloudDownload className="w-5 h-5" />
+            </motion.a>
           </motion.div>
 
-          
         </div>
       </FloatingPlatform>
 
