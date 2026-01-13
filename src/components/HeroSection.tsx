@@ -5,6 +5,8 @@ import PixelCharacter from './PixelCharacter';
 import FloatingPlatform from './FloatingPlatform';
 import { SocialLinksGroup } from './common/SocialLink';
 import { SOCIAL_LINKS } from '@/lib/constants';
+import { Button } from './ui/button';
+import { CloudDownload } from 'lucide-react';
 
 const HeroSection = () => {
   return (
@@ -42,7 +44,20 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
           >
-            <span className="block glow-green">PRINCI JAIN</span>
+            <span className="block glow-green flex items-center justify-center gap-3">
+              <span>PRINCI JAIN</span>
+              <Button
+                asChild
+                size="icon"
+                variant="ghost"
+                className="bg-transparent p-0 hover:bg-transparent hover:text-primary/90 focus:ring-0 transition-colors"
+                aria-label="Download resume"
+              >
+                <a href="/resume.pdf" download="Princi_Jain_Resume.pdf" aria-label="Download resume">
+                  <CloudDownload className="w-4 h-4 text-primary" />
+                </a>
+              </Button>
+            </span>
             <span className="block text-lg md:text-2xl lg:text-3xl mt-4 text-primary">
               AI/ML Developer, Full Stack Developer
             </span>
@@ -72,6 +87,8 @@ const HeroSection = () => {
           >
             <SocialLinksGroup links={SOCIAL_LINKS} size="md" />
           </motion.div>
+
+          
         </div>
       </FloatingPlatform>
 
