@@ -140,7 +140,7 @@ const SkillsSection = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {[
-              { label: 'LEETCODE', value: '475+', color: 'text-primary' },
+              { label: 'LEETCODE', value: '510+', color: 'text-primary' },
               { label: 'PROJECTS', value: '8+', color: 'text-breathing-water' },
               { label: 'WON HACKATHONS', value: '1', color: 'text-hinokami-fire' },
               { label: 'BREATHING STYLES', value: '5', color: 'text-breathing-thunder' },

@@ -31,6 +31,16 @@ export const CONTACT_INFO = {
 export const EXPERIENCE_DATA = [
   {
     title: 'Software Engineer Intern',
+    company: 'Zero Moblt , FEB 2026 - Present',
+    type: 'main' as const,
+    achievements: [
+      'Created the system architecture and developed the Zero Moblt website from the ground up using TypeScript, Next.js, and Tailwind CSS.'
+    ],
+    icon: 'Bug',
+    delay: 0.1,
+  },
+  {
+    title: 'Software Engineer Intern',
     company: 'EVENTBRITE , JULY 2025 - DEC 2025',
     type: 'main' as const,
     achievements: [
@@ -46,8 +56,8 @@ export const EXPERIENCE_DATA = [
     delay: 0.1,
   },
   {
-    title: 'Developer',
-    company: 'TECH FOR AUTISM & DYSLEXIA , APRIL 2024 - SEPT 2024',
+    title: 'Full Stack Developer (Internship)',
+    company: 'Teleparadigm Networks Ltd , APRIL 2024 - AUGUST 2024',
     type: 'side' as const,
     achievements: [
        'Designed and built an interactive memory game for children with dyslexia using a drag-and-drop interface.',
@@ -186,7 +196,7 @@ export const SKILLS_DATA = [
     name: 'MIND BREATHING',
     subtitle: 'Conceptual Combat',
     icon: 'Brain',
-    skills: ['DSA (475+ LC)','OOP', 'AI/ML','Agentic AI', 'System Design', 'CI/CD' , 'CN' , 'OS' ],
+    skills: ['DSA (510+ LC)','OOP', 'AI/ML','Agentic AI', 'System Design', 'CI/CD' , 'CN' , 'OS' ],
     color: 'thunder-breathing',
     glowClass: 'text-breathing-thunder',
     level: 85,

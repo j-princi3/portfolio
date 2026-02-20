@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import PixelCharacter from './PixelCharacter';
+import NezukoCharacter from './NezukoCharacter';
 import FloatingPlatform from './FloatingPlatform';
 import { SocialLinksGroup } from './common/SocialLink';
 import { SOCIAL_LINKS } from '@/lib/constants';
@@ -34,7 +34,7 @@ const HeroSection = () => {
             animate={{ y: 0, opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, type: 'spring', stiffness: 100, damping: 10 }}
           >
-            <PixelCharacter />
+            <NezukoCharacter />
           </motion.div>
 
           {/* Title with glowing effect */}
